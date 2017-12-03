@@ -7,6 +7,12 @@ git pull origin master;
 function getWithIt(){
     rsync --exclude ".git/" \
         --exclude ".DS_Store" \
+        --exclude ".gitconfig" \
+        --exclude ".gitignore" \
+        --exclude "perfs" \
+        --exclude ".function" \
+        --exclude ".inputrc" \
+        --exclude ".gvimrc" \
         --exclude ".osx" \
         --exclude "bootstrap.sh" \
         --exclude "README.md" \
