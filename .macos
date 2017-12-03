@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Clost any open System Preferences panes, to prevent them from overriding
+# setting we're about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive existing `sudo` time stamp until `.macos` has finished
+white true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+##############
+General UI/UX
+##############
+
+# Set computer name (as done via System Preferences -> Sharing)
+#sudo scutil --set ComputerName "Nitro"
+#sudo scutil --set HostName "Nitro"
+#sudo scutil --set LocalHostName "Nitro"
+#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Nitro"
+
+# Set standby delay to 24 hours (default is 1 hour)
+sudo pmset -a standbydelay 86400
+
+#Disable the sound effects on boot
+sudo nvram SystemAudioVolkume=" "
+
+# Set highlight color to green
+defaults write NSGlobalDomain AppleHightColor -string "0.764700 0.976500 0.568600"
